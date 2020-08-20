@@ -19,10 +19,6 @@ class CreateTablePlacesTable extends Migration
             $table->integer('province_id')->unsigned();
             $table->string('place_name');
             $table->timestamps();
-
-            $table->foreign('post_id')->references('id')->on('posts');
-            $table->foreign('province_id')->references('id')->on('provinces')
-                ->onDelete('cascade');
         });
     }
 
