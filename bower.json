@@ -1,0 +1,20 @@
+{
+  "name": "reviewing_travel_nt18",
+  "description": "",
+  "main": "",
+  "authors": [
+    "PhuongThao09 <phuongthao.sq.tuyenquang@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/BuiPhuongThaob/reviewing_travel_nt18",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "review_travel": "git://github.com/BuiPhuongThaob/review_travel.git"
+  }
+}
