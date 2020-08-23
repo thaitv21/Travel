@@ -6,7 +6,7 @@
                     <div class="row align-items-center">
                         <div class="col-xl-2 col-lg-2">
                             <div class="logo">
-                                <a href="#">
+                                <a href="{{ route('home') }}">
                                     <img src="bower_components/review_travel/img_travel/logo.png" alt="">
                                 </a>
                             </div>
@@ -15,7 +15,7 @@
                             <div class="main-menu  d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">
-                                        <li><a class="#" href="#">{{ trans('header.home') }}</a></li>
+                                        <li><a class="#" href="{{ route('home') }}">{{ trans('header.home') }}</a></li>
                                         <li><a href="#">{{ trans('header.places') }}</a></li>
                                         <li><a class="" href="#">{{ trans('header.experience') }}</a></l/li>
                                     </ul>
@@ -30,7 +30,15 @@
                                 <div class="social_links d-none d-xl-block">
                                     <ul>
                                         <li><a href="#"> <i class="fa fa-bell"></i> </a></li>
-                                        <li><a href="#"> <i class="fa fa-plus-circle"></i> {{ trans('header.login') }} </a></li>
+                                        @if (Auth::check())
+                                            <li><a href="{{ route('login') }}"> {{ Auth::user()->name }} </a>
+                                            <a href="{{ route('logout') }}">{{ trans('login.logout') }}</a>
+                                            </li>
+                                        @else
+                                            <li><a href="{{ route('login') }}">
+                                            <i class="fa fa-plus-circle"></i> {{ trans('header.login') }} </a></li>
+                                            <li><a href="{{ route('signup') }}"></i> {{ trans('login.signup_button') }} </a></li>
+                                        @endif
                                     </ul>
                                 </div>
                             </div>

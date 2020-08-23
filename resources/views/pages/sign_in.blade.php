@@ -6,21 +6,41 @@
         <div class="signin-content">
             <div class="signin-image">
                 <figure><img src="{{ asset('bower_components/review_travel/images/signin-image.jpg') }}" alt="sing up image"></figure>
-                <a href="#" class="signup-image-link">{{ trans('login.create_acc') }}</a>
+                <a href="{{ route('signup') }}" class="signup-image-link">{{ trans('login.create_acc') }}</a>
             </div>
+            <div class="row justify-content-center card-body">
 
             <div class="signin-form">
                 <h2 class="form-title">{{ trans('login.signin_title') }}</h2>
-                <form method="GET" class="register-form" id="login-form">
+                <form action="{{ route('login') }}" method="POST" class="register-form" id="login-form">
                     @csrf
-                    <div class="form-group">
-                        <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                        <input type="text" name="your_name" id="your_name" placeholder="{{ trans('login.name') }}"/>
+                    <div class="col-md-8">
+                        @if (session()->has('error_login'))
+                            <div class="alert alert-danger">
+                                {{ session()->get('error_login') }}
+                            </div>
+                        @endif
                     </div>
+                    <div class="form-group">
+                    <label for="email"><i class="zmdi zmdi-email"></i></label>
+                        <input type="text" name="email" id="your_name" placeholder="{{ trans('login.email') }}"/>
+                    </div>
+                    @if ($errors->has('email'))
+                        <div class="form-group">
+                            <p class="alert alert-danger">{{ $errors->first('email') }}</p>
+                        </div>
+                    @endif
+
                     <div class="form-group">
                         <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
-                        <input type="password" name="your_pass" id="your_pass" placeholder="{{ trans('login.password') }}"/>
+                        <input type="password" name="password" id="your_pass" placeholder="{{ trans('login.password') }}"/>
                     </div>
+                    @if ($errors->has('password'))
+                        <div class="form-group">
+                            <p class="alert alert-danger">{{ $errors->first('password') }}</p>
+                        </div>
+                    @endif
+
                     <div class="form-group">
                         <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
                         <label for="remember-me" class="label-agree-term"><span><span></span></span>{{ trans('login.remember') }}</label>
