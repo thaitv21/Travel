@@ -11,5 +11,7 @@
         'again_pass' => 'Repeat your password',
         'login_button' => 'Login',
         'signup_button' => 'Register',
+        'error_login' => 'login fail',
+        'logout' => 'Logout',
     ];
 ?>
