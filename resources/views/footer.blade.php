@@ -13,36 +13,7 @@
                         <p>{{ trans('footer.address') }}<br> {{ trans('footer.city') }} <br>
                             <a href="#">{{ trans('header.phone') }}</a> <br>
                             <a href="#">{{ trans('footer.mail') }}</a>
-                        </p>
-                        <div class="socail_links">
-                            <ul>
-                                <li>
-                                    <a href="#">
-                                        <i class="ti-facebook"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="ti-twitter-alt"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-instagram"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-pinterest"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-youtube-play"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+                        </p>                        
                     </div>
                 </div>
             </div>
@@ -55,7 +26,7 @@
                 <div class="col-xl-12">
                     <p class="copy_right text-center">                        
                         {{ trans('footer.copyright') }} &copy; {{ trans('footer.year') }}
-                        {{ trans('footer.template') }} <i class="fa fa-heart-o" aria-hidden="true"></i> {{ trans('footer.by') }}
+                        {{ trans('footer.template') }} <i class="fa fa-heart" aria-hidden="true"></i> {{ trans('footer.by') }}
                     </p>
                 </div>
             </div>
