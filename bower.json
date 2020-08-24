@@ -15,6 +15,7 @@
     "tests"
   ],
   "dependencies": {
-    "review_travel": "git://github.com/BuiPhuongThaob/review_travel.git"
+    "review_travel": "git://github.com/BuiPhuongThaob/review_travel.git",
+    "font-awesome": "^5.14.0"
   }
 }

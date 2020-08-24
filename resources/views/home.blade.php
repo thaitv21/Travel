@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{{ asset('bower_components/review_travel/css_travel/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('bower_components/review_travel/css_travel/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('bower_components/review_travel/css_travel/magnific-popup.css') }}">
-    <link rel="stylesheet" href="{{ asset('bower_components/review_travel/css_travel/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bower_components/font-awesome/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('bower_components/review_travel/css_travel/themify-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('bower_components/review_travel/css_travel/nice-select.css') }}">
     <link rel="stylesheet" href="{{ asset('bower_components/review_travel/css_travel/flaticon.css') }}">
