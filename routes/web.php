@@ -22,4 +22,5 @@ Route::post('sign-in', 'LoginController@postLogin')->name('login');
 
 Route::get('logout', 'LoginController@postLogout')->name('logout');
 
-Route::resource('post', 'PostController');
+Route::resource('posts', 'PostController');
+Route::resource('profiles', 'ProfileController');

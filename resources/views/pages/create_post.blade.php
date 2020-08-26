@@ -22,7 +22,7 @@
 </div>
 <div class="container">
     <div class="card-body">
-        <form action="{{ route('post.index') }}" method="POST">
+        <form action="{{ route('posts.index') }}" method="POST">
             @csrf
             <div class="form-group">
                 <h4>{{ trans('post.title') }}</h4>
