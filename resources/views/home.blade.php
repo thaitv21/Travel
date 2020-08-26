@@ -26,6 +26,8 @@
     <link rel="stylesheet" href="{{ asset('bower_components/review_travel/css_travel/slicknav.css') }}">
 
     <link rel="stylesheet" href="{{ asset('bower_components/review_travel/css_travel/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/review_travel/css_travel/post.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/select2/dist/css/select2.min.css') }}">
     <!-- <link rel="stylesheet" href="css/responsive.css"> -->
 </head>
 
@@ -65,12 +67,12 @@
     
     <!--contact js-->
     <script src="{{ asset('bower_components/review_travel/js_travel/contact.js') }}"></script>
-    <script src="{{ asset('bower_components/review_travel/js_travel/js/jquery.ajaxchimp.min.js') }}"></script>
+    <!-- <script src="{{ asset('bower_components/review_travel/js_travel/js/jquery.ajaxchimp.min.js') }}"></script> -->
     <script src="{{ asset('bower_components/review_travel/js_travel/jquery.form.js') }}"></script>
     <script src="{{ asset('bower_components/review_travel/js_travel/jquery.validate.min.js') }}"></script>
     <script src="{{ asset('bower_components/review_travel/js_travel/mail-script.js') }}"></script>
-
-
+    <script src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
+    @yield('script')
     <script src="{{ asset('bower_components/review_travel/js_travel/main.js') }}"></script>
 </body>
 

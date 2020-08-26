@@ -16,6 +16,7 @@
   ],
   "dependencies": {
     "review_travel": "git://github.com/BuiPhuongThaob/review_travel.git",
-    "font-awesome": "^5.14.0"
+    "font-awesome": "^5.14.0",
+    "jquery": "^3.5.1"
   }
 }
