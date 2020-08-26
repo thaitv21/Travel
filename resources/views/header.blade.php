@@ -24,9 +24,15 @@
                         </div>
                         <div class="col-xl-4 col-lg-4 d-none d-lg-block">
                             <div class="social_wrap d-flex align-items-center justify-content-end">
-                                <div class="number">
-                                    <p> <i class="fa fa-phone"></i>{{ trans('header.phone') }}</p>
-                                </div>
+                                @if (Auth::check())
+                                    <div class="number">
+                                        <a href="{{ route('post.index') }}"><i class="fa fa-plus-circle"></i> {{ trans('header.create_post') }} </a>
+                                    </div>
+                                @else
+                                    <div class="number">
+                                        <a href="{{ route('login') }}"><i class="fa fa-plus-circle"></i> {{ trans('header.create_post') }} </a>
+                                    </div>
+                                @endif
                                 <div class="social_links d-none d-xl-block">
                                     <ul>
                                         <li><a href="#"> <i class="fa fa-bell"></i> </a></li>
@@ -35,8 +41,7 @@
                                             <a href="{{ route('logout') }}">{{ trans('login.logout') }}</a>
                                             </li>
                                         @else
-                                            <li><a href="{{ route('login') }}">
-                                            <i class="fa fa-plus-circle"></i> {{ trans('header.login') }} </a></li>
+                                            <li><a href="{{ route('login') }}">{{ trans('header.login') }} </a></li>
                                             <li><a href="{{ route('signup') }}"></i> {{ trans('login.signup_button') }} </a></li>
                                         @endif
                                     </ul>
@@ -47,9 +52,6 @@
                             <a data-toggle="modal" data-target="#exampleModalCenter" href="#">
                                 <i class="fa fa-search"></i>
                             </a>
-                        </div>
-                        <div class="col-12">
-                            <div class="mobile_menu d-block d-lg-none"></div>
                         </div>
                     </div>
                 </div>

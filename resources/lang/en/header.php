@@ -7,5 +7,6 @@
         'login' => 'Login',
         'search_input' => 'Where you want to go?',
         'search_button' => 'Search',
+        'create_post' => 'Create Review',
     ];
 ?>
