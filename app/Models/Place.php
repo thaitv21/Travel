@@ -8,6 +8,7 @@ class Place extends Model
 {
     protected $fillable = [
         'place_name',
+        'province_id',
     ];
 
     public function posts()

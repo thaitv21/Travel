@@ -26,7 +26,7 @@
                             <div class="social_wrap d-flex align-items-center justify-content-end">
                                 @if (Auth::check())
                                     <div class="number">
-                                        <a href="{{ route('posts.index') }}"><i class="fa fa-plus-circle"></i> {{ trans('header.create_post') }} </a>
+                                        <a href="{{ route('posts.create') }}"><i class="fa fa-plus-circle"></i> {{ trans('header.create_post') }} </a>
                                     </div>
                                 @else
                                     <div class="number">
@@ -42,7 +42,7 @@
                                                     role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 {{ Auth::user()->name }}</a>
                                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                <a class="dropdown-item" href="#">{{ trans('profile.my_posts') }}</a>
+                                                <a class="dropdown-item" href="{{route('posts.index') }}">{{ trans('profile.my_posts') }}</a>
                                                 <a class="dropdown-item" href="{{route('profiles.index') }}">{{ trans('profile.edit_profile') }}</a>
                                                 <a class="dropdown-item" href="{{ route('logout') }}">{{ trans('login.logout') }}</a>
                                                 </div>

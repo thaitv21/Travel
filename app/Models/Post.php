@@ -10,6 +10,8 @@ class Post extends Model
         'title',
         'intro',
         'content',
+        'user_id',
+        'place_id',
     ];
 
     public function user()
