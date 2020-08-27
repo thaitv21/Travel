@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use Auth;
+use Hash;
+use App\Http\Requests\UpdateProfileRequest;
 
 class ProfileController extends Controller
 {
@@ -13,7 +17,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('pages.profile');
+        return view('pages.profiles.edit');
     }
 
     /**
@@ -32,7 +36,7 @@ class ProfileController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UpdateProfileRequest $request)
     {
         //
     }
@@ -56,7 +60,9 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        return view('pages.profiles.edit', compact('user'));
     }
 
     /**
@@ -66,9 +72,27 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateProfileRequest $request, $id)
     {
-        //
+        $user = User::findOrFail($id);
+        if ($request->hasFile('avatar')) {
+            $fileName = $request->file('avatar')->getClientOriginalName();
+            $user->avatar = $request->file('avatar')->move('Upload_Img', $fileName);
+        }
+
+        $user->name = $request->name;
+        if (!is_null($request->password)) {
+            if (Hash::check($request->password, $user->password)) {
+                $user->password = Hash::make($request->new_password);
+            }
+            else {
+                return redirect()->back()->with('error_pass', trans('profile.error_pass'));
+            }
+        }        
+        
+        $user->update();
+
+        return redirect()->back()->with('success', trans('profile.success_mess'));
     }
 
     /**

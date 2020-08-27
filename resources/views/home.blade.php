@@ -12,6 +12,7 @@
     <!-- Place favicon.ico in the root directory -->
 
     <!-- CSS here -->
+    @yield('css')
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('bower_components/review_travel/css_travel/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('bower_components/review_travel/css_travel/owl.carousel.min.css') }}">
