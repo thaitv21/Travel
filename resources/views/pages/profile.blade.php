@@ -1,5 +1,6 @@
 @extends('home')
 @section('css')
+    <link rel="stylesheet" href="{{ asset('css/all.css') }}"> 
     <link rel="stylesheet" href="{{ asset('bower_components/review_travel/css_travel/profile.css') }}">
     <link rel="stylesheet" href="{{ asset('bower_components/review_travel/css_travel/edit_profile.css') }}">   
 @endsection

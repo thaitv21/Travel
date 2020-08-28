@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateProfileRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Auth;
 use Hash;
-use App\Http\Requests\UpdateProfileRequest;
 
 class ProfileController extends Controller
 {

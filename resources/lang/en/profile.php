@@ -11,5 +11,7 @@
         'success_mess' => "Successfully updated",
         'error_pass' => 'Incorrect password',
         'post' => 'Posts',
+        'comment' =>  " 0 Comment",
+        'like' => ' 0 Like',
     ];
 ?>

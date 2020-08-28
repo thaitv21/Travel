@@ -3,7 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\PostRequest;
 use App\Models\Province;
+use App\Models\Post;
+use App\Models\Image;
+use App\Models\Place;
+use App\Models\User;
+use Auth;
 
 class PostController extends Controller
 {
@@ -14,9 +20,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        $provinces = Province::all();
+        $user = User::with('posts')->find(Auth::id());
 
-        return view('pages.create_post', compact('provinces'));
+        return view('pages.profiles.mypost', compact('user'));
     }
 
     /**
@@ -26,7 +32,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $provinces = Province::all();
+
+        return view('pages.create_post', compact('provinces'));
     }
 
     /**
@@ -35,9 +43,35 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
-        //
+        $place = Place::create([
+            'place_name' => $request->place,
+            'province_id' => $request->prov_list,
+        ]);
+
+        $post = new Post;
+        $post->user_id = Auth::id();
+        $post->title = $request->title;
+        $post->intro = $request->intro;
+        $post->content = $request->content;
+        $post->status = config('constains.show');
+
+        $place->posts()->save($post);
+        if ($request->hasFile('images')) {
+            $file_images = $request->file('images');
+            foreach ($file_images as $file_image) {
+                $filename = $file_image->getClientOriginalName();
+                $url = $file_image->move('Upload_Img', $filename);;
+                $image = new Image([
+                    'url' => $url,
+                ]);
+
+                $post->images()->save($image);
+            }
+        }
+
+        return redirect()->route('home')->with('success', trans('profile.success_mess'));
     }
 
     /**
