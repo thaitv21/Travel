@@ -16,3 +16,6 @@ mix.js('resources/js/app.js', 'public/js')
 mix.styles([
     'resources/css/header.css',
 ], 'public/css/all.css');
+mix.js([
+    'resources/js/edit_post.js',
+], 'public/js/all.js');

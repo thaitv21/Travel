@@ -8,10 +8,15 @@
         'cur_pass' => 'Current password:',
         'new_pass' => 'New password:',
         'send' => "Send",
-        'success_mess' => "Successfully updated",
+        'success_mess' => " Update Successfully",
         'error_pass' => 'Incorrect password',
         'post' => 'Posts',
         'comment' =>  " 0 Comment",
         'like' => ' 0 Like',
+        'province' => 'Provinces (places)',
+        'edit_post' => "Edit Post",
+        'delete' => "Delete", 
+        'success_delete' => 'Delete Successfully',
+        'update_btn' => 'Update',
     ];
 ?>

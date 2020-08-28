@@ -11,5 +11,10 @@
         'success_mess' => "Thay đổi thành công",
         'error_pass' => 'Mật khẩu không đúng',
         'post' => 'Bài đăng',
+        'province' => 'Các tỉnh/thành phố',
+        'edit_post' => "Sửa",
+        'delete' => "Xóa", 
+        'success_delete' => 'Xóa thành công',
+        'update_btn' => 'Cập nhật',
     ];
 ?>

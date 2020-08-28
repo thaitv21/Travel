@@ -7,11 +7,11 @@
                         <div class="col-xl-2 col-lg-2">
                             <div class="logo">
                                 <a href="{{ route('home') }}">
-                                    <img src="bower_components/review_travel/img_travel/logo.png" alt="">
+                                    <img src="{{ asset('bower_components/review_travel/img_travel/logo.png') }}" alt="">
                                 </a>
                             </div>
                         </div>
-                        <div class="col-xl-6 col-lg-6">
+                        <div class="col-xl-4 col-lg-4">
                             <div class="main-menu  d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">
@@ -22,7 +22,7 @@
                                 </nav>
                             </div>
                         </div>
-                        <div class="col-xl-4 col-lg-4 d-none d-lg-block">
+                        <div class="col-xl-6 col-lg-6 d-none d-lg-block">
                             <div class="social_wrap d-flex align-items-center justify-content-end">
                                 @if (Auth::check())
                                     <div class="number">
@@ -37,16 +37,26 @@
                                     <ul>
                                         <li><a href="#"> <i class="fa fa-bell"></i> </a></li>
                                         @if (Auth::check())
+                                            <li>
+                                                @if (Auth::user()->avatar == NULL)
+                                                    <img src="{{ asset(config('constains.avatar')) }}" 
+                                                        class="avt-img-header margin-left-avt " alt="{{ trans('profile.user_avt') }}"></label>
+                                                @else
+                                                    <img src="{{ asset(Auth::user()->avatar) }}" 
+                                                        class="avt-img-header margin-left-avt " alt="{{ trans('profile.user_avt') }}"></label>
+                                                @endif
+                                            </li>
                                             <li class="nav-item dropdown">
                                                 <a class="nav-link dropdown-toggle" href="{{ route('login') }}" id="navbarDropdown" 
                                                     role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 {{ Auth::user()->name }}</a>
                                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                <a class="dropdown-item" href="{{route('posts.index') }}">{{ trans('profile.my_posts') }}</a>
-                                                <a class="dropdown-item" href="{{route('profiles.index') }}">{{ trans('profile.edit_profile') }}</a>
-                                                <a class="dropdown-item" href="{{ route('logout') }}">{{ trans('login.logout') }}</a>
+                                                    <a class="dropdown-item" href="{{ route('posts.index') }}">{{ trans('profile.my_posts') }}</a>
+                                                    <a class="dropdown-item" href="{{ route('profiles.index') }}">{{ trans('profile.edit_profile') }}</a>
+                                                    <a class="dropdown-item" href="{{ route('logout') }}">{{ trans('login.logout') }}</a>
                                                 </div>
                                             </li>
+                                            
                                         @else
                                             <li><a href="{{ route('login') }}">{{ trans('header.login') }} </a></li>
                                             <li><a href="{{ route('signup') }}"></i> {{ trans('login.signup_button') }} </a></li>
@@ -54,17 +64,6 @@
                                     </ul>
                                 </div>
                             </div>
-                        </div>
-                        <div class="seach_icon">
-                            @if (Auth::check())
-                                @if (Auth::user()->avatar == NULL)
-                                    <img src="{{ asset(config('constains.avatar')) }}" 
-                                        id="avt-img-header" alt="{{ trans('profile.user_avt') }}"></label>
-                                @else
-                                    <img src="{{ Auth::user()->avatar }}" 
-                                        id="avt-img-header" alt="{{ trans('profile.user_avt') }}"></label>
-                                @endif
-                            @endif
                         </div>
                     </div>
                 </div>

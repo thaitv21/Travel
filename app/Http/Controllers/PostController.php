@@ -82,7 +82,10 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::find($id);
+        $provinces = Province::all();
+
+        return view('pages.single_post', compact('post', 'provinces'));
     }
 
     /**
@@ -93,7 +96,10 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $provinces = Province::all();
+
+        return view('pages.edit_post', compact('post', 'provinces'));
     }
 
     /**
@@ -103,9 +109,32 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PostRequest $request, $id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $post->title = $request->title;
+        $post->intro = $request->intro;
+        $post->content = $request->content;
+
+        $post->place->place_name = $request->place;
+        $post->place->province_id = $request->prov_list;
+
+        if ($request->hasFile('images')) {
+            $file_images = $request->file('images');
+            foreach ($file_images as $file_image) {
+                $filename = $file_image->getClientOriginalName();
+                $url = $file_image->move('Upload_Img', $filename);;
+                $image = Image::update([
+                    'url' => $url,
+                ]);
+
+                $post->images()->push($image);
+            }
+        }
+
+        $post->push();
+
+        return redirect()->back()->with('success', trans('profile.success_mess'));
     }
 
     /**
@@ -116,6 +145,9 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $post->delete();
+
+        return redirect()->route('home')->with('success', trans('profile.success_delete'));
     }
 }
