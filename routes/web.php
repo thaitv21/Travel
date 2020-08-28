@@ -24,3 +24,5 @@ Route::get('logout', 'LoginController@postLogout')->name('logout');
 
 Route::resource('posts', 'PostController');
 Route::resource('profiles', 'ProfileController');
+
+Route::get('places', 'ProvinceController@index')->name('places');

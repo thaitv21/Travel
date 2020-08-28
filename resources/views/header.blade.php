@@ -16,7 +16,7 @@
                                 <nav>
                                     <ul id="navigation">
                                         <li><a class="#" href="{{ route('home') }}">{{ trans('header.home') }}</a></li>
-                                        <li><a href="#">{{ trans('header.places') }}</a></li>
+                                        <li><a href="{{ route('places') }}">{{ trans('header.places') }}</a></li>
                                         <li><a class="" href="#">{{ trans('header.experience') }}</a></l/li>
                                     </ul>
                                 </nav>
@@ -56,9 +56,15 @@
                             </div>
                         </div>
                         <div class="seach_icon">
-                            <a data-toggle="modal" data-target="#exampleModalCenter" href="#">
-                                <i class="fa fa-search"></i>
-                            </a>
+                            @if (Auth::check())
+                                @if (Auth::user()->avatar == NULL)
+                                    <img src="{{ asset(config('constains.avatar')) }}" 
+                                        id="avt-img-header" alt="{{ trans('profile.user_avt') }}"></label>
+                                @else
+                                    <img src="{{ Auth::user()->avatar }}" 
+                                        id="avt-img-header" alt="{{ trans('profile.user_avt') }}"></label>
+                                @endif
+                            @endif
                         </div>
                     </div>
                 </div>

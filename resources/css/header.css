@@ -1,0 +1,9 @@
+#avt-img-header {
+    border: 1px solid rgba(57, 64, 73, 0.9);
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    margin-top: 25px;
+    margin-bottom: auto;  
+    text-align: center;
+}
