@@ -45,3 +45,11 @@
     width: 20px; 
     text-align: center;
 }
+
+#img_title {
+    display: none;
+}
+
+#input-avt {
+    display: none;
+}

@@ -15,6 +15,7 @@ mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css');
 mix.styles([
     'resources/css/header.css',
+    'resources/css/admin.css',
 ], 'public/css/all.css');
 mix.js([
     'resources/js/edit_post.js',

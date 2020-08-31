@@ -1,0 +1,40 @@
+.img-avt-admin {
+    display: block;
+    max-width:90px;
+    max-height:90px;  
+    width: auto;  
+    height: auto;
+}
+
+table, th, td{
+    border:1px solid #ccc;
+}
+table{
+    border-collapse:collapse;
+    width:100%;
+}
+th, td{
+    text-align:center;
+    padding:10px;
+}
+tr:hover{
+    background-color:#ddd;
+    cursor:pointer;
+}
+
+.btn-hide {
+    background-color: Crimson;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.btn-hide:hover {
+    background-color: rgb(6, 73, 73);
+}

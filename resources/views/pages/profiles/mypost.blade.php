@@ -44,9 +44,6 @@
                                 </form>
                             </div>                           
                         </div>
-                        <a href="{{ route('posts.show', $post->id) }}" class="col-lg-12">
-                            <p>{{ $post->intro }}</p>
-                        </a>
                     </div>
                 </div>
             </div>

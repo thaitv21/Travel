@@ -26,3 +26,8 @@ Route::resource('posts', 'PostController');
 Route::resource('profiles', 'ProfileController');
 
 Route::get('places', 'ProvinceController@index')->name('places');
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('users', 'AdminController@getUsers')->name('users');
+    Route::get('posts', 'AdminController@getPosts')->name('posts');
+});
