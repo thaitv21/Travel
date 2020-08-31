@@ -1,9 +1,34 @@
-#avt-img-header {
+.avt-img-header {
     border: 1px solid rgba(57, 64, 73, 0.9);
     border-radius: 50%;
     height: 50px;
-    width: 50px;
-    margin-top: 25px;
-    margin-bottom: auto;  
+    width: 50px; 
     text-align: center;
+}
+
+.text-align-center {
+    margin-top: 15px;
+    text-align: center;
+    margin-left: 10px;
+}
+
+.margin-left-avt {
+    margin-left: 20px;
+}
+
+.float-right {
+    float: right !important;
+}
+
+.margin-left-date {
+    margin-left: 200px;
+}
+
+.border-post {
+    background-attachment: rgba(170, 183, 202, 0.9) !important;
+    border-radius: 5px;
+}
+
+#delete-btn {
+    margin-top: 0px;
 }

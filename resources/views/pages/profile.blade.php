@@ -1,6 +1,6 @@
 @extends('home')
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/all.css') }}"> 
+    <link rel="stylesheet" href="{{ mix('css/all.css') }}"> 
     <link rel="stylesheet" href="{{ asset('bower_components/review_travel/css_travel/profile.css') }}">
     <link rel="stylesheet" href="{{ asset('bower_components/review_travel/css_travel/edit_profile.css') }}">   
 @endsection
@@ -27,7 +27,7 @@
     <div class="">
         <ul class="nav nav-tabs tabs-alt justify-content-center">
             <li class="nav-item">
-                <a class="nav-link py-4 active" id="post" href="#">{{ trans('profile.post') }}</a>
+                <a class="nav-link py-4 active" id="post" href="{{ route('posts.index') }}">{{ trans('profile.post') }}</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link py-4" id="edit" href="{{ route('profiles.index') }}">{{ trans('profile.edit_profile') }}</a>
