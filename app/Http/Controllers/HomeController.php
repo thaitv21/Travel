@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Post;
 class HomeController extends Controller
 {
     public function index()
     {
-        return view('pages.home_page');
+        $posts = Post::latest()->limit(config('constains.posts_list'))->get();
+
+        return view('pages.home_page', compact('posts'));
+
     }
 }
