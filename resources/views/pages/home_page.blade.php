@@ -45,14 +45,14 @@
                     @foreach ($posts as $post)
                         <div class="col-lg-4 col-md-6">
                             <div class="single_trip home-post">
-                                <div class="thumb">
+                                <div class="thumb img-post-home">
                                     <img src="{{ asset($post->images->first()->url) }}" alt="">
                                 </div>
                                 <div class="info margin-left-avt">
                                     <div class="date">
                                         <span><i class="far fa-calendar-alt"></i>{{ $post->created_at->format(' d, M, Y') }}</span>
                                     </div>
-                                    <a href="#">
+                                    <a href="{{ route('posts.show', $post->id) }}">
                                         <h3>{{ $post->title }}</h3>
                                     </a>
                                     <span>

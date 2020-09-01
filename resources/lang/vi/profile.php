@@ -10,6 +10,8 @@
         'send' => "Gửi",
         'success_mess' => "Thay đổi thành công",
         'error_pass' => 'Mật khẩu không đúng',
+        'comment' =>  " Bình luận",
+        'like' => ' 0 Thích',
         'post' => 'Bài đăng',
         'province' => 'Các tỉnh/thành phố',
         'edit_post' => "Sửa",

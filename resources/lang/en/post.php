@@ -12,5 +12,8 @@
         'para' => 'Paragraph',
         'choose_img' => "Choose Image",
         'uploaded' => "The image uploaded will be rendered inside the box below.",
+        'cmt' => 'Leave a Comment',
+        'btn_send' => 'Send Message',
+        'reply' => 'reply',
     ];
 ?>

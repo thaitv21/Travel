@@ -31,3 +31,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('users', 'AdminController@getUsers')->name('users');
     Route::get('posts', 'AdminController@getPosts')->name('posts');
 });
+
+Route::resource('comments', 'CommentController');
+Route::post('comments/reply', 'CommentController@replyStore')->name('reply');
+

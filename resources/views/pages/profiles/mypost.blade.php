@@ -4,7 +4,7 @@
         <div class="recent_trip_area">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-lg-9 card-body">
+                    <div class="col-lg-9 card-body my-post ">
                         <div class="col-lg-12">
                             <div class=" text-center">
                                 <div class="single_trip">
@@ -26,7 +26,7 @@
                         </div> 
                         <div class="info col-lg-12 row ">
                             <a href="" class="col-lg-1"><i class="fas fa-thumbs-up"></i></a>
-                            <a href="" class="col-lg-3"><i class="far fa-comments"></i>{{ trans('profile.comment') }}</a> 
+                            <a href="" class="col-lg-3"><i class="far fa-comments"></i>{{ count($post->comments) }}{{ trans('profile.comment') }}</a> 
                             <div class="date col-lg-4">                                 
                                 <span><i class="far fa-calendar-alt"></i><span> </span>{{ $post->created_at->format('d/m/Y, H:i a') }}</span>
                             </div>

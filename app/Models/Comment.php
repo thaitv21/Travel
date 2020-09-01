@@ -8,11 +8,15 @@ class Comment extends Model
 {
     protected $fillable = [
         'comment',
+        'post_id',
+        'user_id',
+        'status',
+        'parent_id',
     ];
 
-    public function comments()
+    public function replies()
     {
-        return $this->hasMany(Comment::class,'parent_id');
+        return $this->hasMany(Comment::class, 'parent_id');
     }
 
     public function user()
