@@ -16,14 +16,21 @@ class LoginController extends Controller
 
     public function postLogin(LoginRequest $request)
     {
-        $credentials = array(
+        $isAdmin = [
             'email' => $request->email, 
-            'password' => $request->password
-        );
-        if (Auth::attempt($credentials)) {
+            'password' => $request->password,
+            'role_id' => config('constains.is_admin'),
+        ];
+        $isUser = [
+            'email' => $request->email, 
+            'password' => $request->password,
+            'role_id' => config('constains.is_user'),
+        ];
+        if (Auth::attempt($isAdmin)) {
+            return redirect()->route('users');
+        } elseif (Auth::attempt($isUser)) {
             return redirect()->route('home');
-        }
-        else {
+        } else {
             return redirect()->back()->with('error_login', trans('login.error_login'));
         }
     }

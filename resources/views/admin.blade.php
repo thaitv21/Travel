@@ -17,7 +17,7 @@
 <body id="page-top">
     <div id="wrapper">
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('home') }}">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -37,7 +37,7 @@
             </li>
             <hr class="sidebar-divider">
             <li class="nav-item">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="{{ route('comments') }}">
                     <i class="fas fa-fw fa-table"></i>
                     <span>{{ trans('admin.cmts_list') }}</span></a>
             </li>
@@ -70,5 +70,6 @@
     <script src="{{ asset('bower_components/review_travel/js_admin/demo/chart-pie-demo.js') }}"></script>
     <script src="{{ asset('bower_components/review_travel/vendor_adminvendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('bower_components/review_travel/vendor_adminvendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ mix('js/all.js') }}"></script>
 </body>
 </html>

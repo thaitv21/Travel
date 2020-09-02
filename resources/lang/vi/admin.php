@@ -20,5 +20,13 @@
         'admin_acc' => 'Admin',
         'logout' => 'Đăng xuất',
         'btn-hide' => 'Ẩn',
+        'post_id' => 'post_id',
+        'cmt' => 'Comment',
+        'parent_id' => 'parent_id',
+        'btn_lock' => 'Khóa',
+        'success_hidden' => 'Ẩn thành công!!',
+        'success_show' => 'Hiện thành công!!',
+        'success_lock' => 'Khóa thành công!!',
+        'success_unlock' => 'Mở khóa thành công!!',
     ];
 ?>
