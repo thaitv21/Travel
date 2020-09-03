@@ -54,11 +54,83 @@
                     </div>                 
                 </div>
                 <div class="comments-area">
-                    <h4>{{ trans('profile.comment') }}</h4>
-                    <div class="comment-list">
-                        
-                    </div>         
-                </div>               
+                    <h4>{{ count($post->comments) }}{{ trans('profile.comment') }}</h4>
+                    @foreach ($post->comments as $comment)
+                        @if ($comment->parent_id == NULL)
+                            <div class="comment-list">
+                                <div class="single-comment justify-content-between d-flex">
+                                    <div class="user justify-content-between d-flex">
+                                        <div class="thumb">
+                                            <img src="{{ asset($comment->user->avatar) }}" alt="">
+                                        </div>
+                                        <div class="desc">                                    
+                                            <div class="d-flex justify-content-between">
+                                                <div class="d-flex align-items-center">
+                                                    <h5>
+                                                    <a href="#">{{ $comment->user->name }}</a>
+                                                    </h5>
+                                                    <p class="date">{{ $comment->created_at->format('M d, Y H:i a') }}</p>
+                                                    @if (Auth::id() == $comment->user->id)
+                                                        <form action="{{ route('comments.destroy', $comment->id) }}" method="POST">
+                                                            @csrf
+                                                            @method('DELETE')                                    
+                                                            <button type="submit" class="btn" id="delete-btn"><i class="fas fa-trash-alt"></i></button>
+                                                        </form>
+                                                    @endif
+                                                </div>                                       
+                                            </div>
+                                            <p class="comment">
+                                                {{ $comment->comment }}
+                                            </p>
+                                            <div>                                    
+                                                <form method="post" action="{{ route('reply') }}">
+                                                    @csrf
+                                                    <div class="form-group">
+                                                        <input type="text" name="comment" class="form-control" />
+                                                        <input type="hidden" name="post_id" value="{{ $post->id }}" />
+                                                        <input type="hidden" name="parent_id" value="{{ $comment->id }}" />
+                                                    </div>
+                                                    @if (Auth::check()) 
+                                                        <div class="form-group">
+                                                            <input type="hidden" name="user_id" value="{{ Auth::id() }}">
+                                                            <input type="submit" class="btn btn-primary" value="{{ trans('post.reply') }}"/>
+                                                        </div>
+                                                    @else
+                                                        <div class="form-group">
+                                                            <a class="btn btn-primary" href="{{ route('login') }}">{{ trans('post.reply') }}</a>
+                                                        </div>
+                                                    @endif
+                                                </form>                        
+                                            </div>
+                                            @include('pages.comment', ['comments' => $comment->replies])                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach        
+                </div>
+                <div class="comment-form">
+                    <h4>{{ trans('post.cmt') }}</h4>
+                    <form class="form-contact comment_form" action="{{ route('comments.store') }}" id="commentForm" method="POST">
+                        @csrf
+                        <div class="form-group">
+                            <textarea class="form-control" name="comment" id="comment" cols="30" rows="9"
+                                placeholder="Write Comment"></textarea>
+                            <input type="hidden" name="post_id" value="{{ $post->id }}">
+                        </div>
+                        @if (Auth::check()) 
+                            <div class="form-group">
+                                <input type="hidden" name="user_id" value="{{ Auth::id() }}">
+                                <button type="submit" class="button button-contactForm btn_1 boxed-btn">{{ trans('post.btn_send') }}</button>
+                            </div>
+                        @else
+                            <div class="form-group">
+                                <a class="button button-contactForm btn_1 boxed-btn" href="{{ route('login') }}">{{ trans('post.btn_send') }}</a>
+                            </div>
+                        @endif
+                    </form>
+                </div>              
             </div>
             <div class="col-lg-4">
                 <div class="blog_right_sidebar">
@@ -83,7 +155,6 @@
     </div>
 </section>
 
-@yield('profile')
 @endsection
 @section('script')
     <script src="{{ mix('js/all.js') }}"></script>

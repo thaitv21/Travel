@@ -11,7 +11,7 @@
         'success_mess' => " Update Successfully",
         'error_pass' => 'Incorrect password',
         'post' => 'Posts',
-        'comment' =>  " 0 Comment",
+        'comment' =>  " Comment",
         'like' => ' 0 Like',
         'province' => 'Provinces (places)',
         'edit_post' => "Edit Post",
