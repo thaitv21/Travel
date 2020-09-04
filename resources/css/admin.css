@@ -39,3 +39,7 @@ tr:hover{
     background-color: rgb(230, 227, 74);
     color: black;
 }
+
+.text-white  {
+    color: white;
+}

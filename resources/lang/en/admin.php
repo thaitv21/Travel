@@ -28,5 +28,10 @@
         'success_show' => 'Show successfully!!',
         'success_lock' => 'Lock successfully!!',
         'success_unlock' => 'Unlock successfully!!',
+        'add_user_header' => 'Add User',
+        'add_sucess' => 'Add user successfully!!',
+        'edit_sucess' => 'Edit user successfully!!',
+        'add_btn' => 'ADD',
+        'edit' => 'Edit',
     ];
 ?>

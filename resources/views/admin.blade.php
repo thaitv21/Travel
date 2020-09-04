@@ -8,6 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>{{ trans('admin.admin_page') }}</title>
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/review_travel/vendor_admin/fontawesome-free/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('bower_components/review_travel/css_admin/sb-admin-2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/all.css') }}">

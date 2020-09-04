@@ -34,6 +34,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('posts/{id}','AdminController@actionPost')->name('hidden_post');
     Route::get('comments/{id}','AdminController@actionComment')->name('hidden_cmt');
     Route::get('users/{id}','AdminController@actionUser')->name('hidden_user');
+    Route::resource('action_users', 'UserController');
 });
 
 Route::resource('comments', 'CommentController');

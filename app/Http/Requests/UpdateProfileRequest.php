@@ -25,6 +25,10 @@ class UpdateProfileRequest extends FormRequest
     {
         return [
             'name' => 'min:4',
+            'email' => 'max:255|email|unique:users,email',
+            'name' => 'min:4',
+            'password' => 'min:6',
+            're_pass' => 'same:password',
         ];
     }
 }
