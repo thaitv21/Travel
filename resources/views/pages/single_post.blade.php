@@ -48,7 +48,17 @@
                 </div>
                 <div class="navigation-top">
                     <div class="d-sm-flex justify-content-between text-center">
-                        <p class="like-info"><a href="" class="col-lg-2"><i class="fas fa-thumbs-up"></i>{{ trans('profile.like') }}</a></p>
+                        <p class="like-info">
+                            @if (Auth::check())                             
+                                <a href="{{ route('like', $post->id) }}" class="col-lg-2"><i class="fas fa-thumbs-up">                                
+                                    </i>{{ count($post->likes) }}
+                                </a>
+                            @else
+                                <a href="{{ route('login') }}" class="col-lg-2"><i class="fas fa-thumbs-up">                                
+                                    </i>{{ count($post->likes) }}
+                                </a>
+                            @endif
+                        </p>
                         <div class="col-sm-4 text-center my-2 my-sm-0">                        
                         </div>
                     </div>                 

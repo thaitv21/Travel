@@ -25,8 +25,8 @@
                                 </a>
                         </div> 
                         <div class="info col-lg-12 row ">
-                            <a href="" class="col-lg-1"><i class="fas fa-thumbs-up"></i></a>
-                            <a href="" class="col-lg-3"><i class="far fa-comments"></i>{{ count($post->comments) }}{{ trans('profile.comment') }}</a> 
+                            <a href="{{ route('posts.show', $post->id) }}" class="col-lg-1"><i class="fas fa-thumbs-up"></i>{{ count($post->likes) }}</a>
+                            <a href="{{ route('posts.show', $post->id) }}" class="col-lg-3"><i class="far fa-comments"></i>{{ count($post->comments) }}{{ trans('profile.comment') }}</a> 
                             <div class="date col-lg-4">                                 
                                 <span><i class="far fa-calendar-alt"></i><span> </span>{{ $post->created_at->format('d/m/Y, H:i a') }}</span>
                             </div>

@@ -13,5 +13,6 @@
         'signup_button' => 'Register',
         'error_login' => 'login fail',
         'logout' => 'Logout',
+        'error_lock' => 'Your Account is Locked!'
     ];
 ?>

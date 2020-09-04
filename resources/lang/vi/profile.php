@@ -18,5 +18,6 @@
         'delete' => "Xóa", 
         'success_delete' => 'Xóa thành công',
         'update_btn' => 'Cập nhật',
+        'admin_page' => 'Trang quản lý',
     ];
 ?>
