@@ -39,3 +39,4 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 Route::resource('comments', 'CommentController');
 Route::post('comments/reply', 'CommentController@replyStore')->name('reply');
 
+Route::get('like/{id}', 'LikeController@addLike')->name('like');

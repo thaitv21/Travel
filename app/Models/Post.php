@@ -12,6 +12,7 @@ class Post extends Model
         'content',
         'user_id',
         'place_id',
+        'status',
     ];
 
     public function user()

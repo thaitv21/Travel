@@ -20,16 +20,26 @@ class LoginController extends Controller
             'email' => $request->email, 
             'password' => $request->password,
             'role_id' => config('constains.is_admin'),
+            'status' => config('constains.show'),
         ];
         $isUser = [
             'email' => $request->email, 
             'password' => $request->password,
             'role_id' => config('constains.is_user'),
+            'status' => config('constains.show'),
         ];
-        if (Auth::attempt($isAdmin)) {
-            return redirect()->route('users');
-        } elseif (Auth::attempt($isUser)) {
+        $isUserHide = [
+            'email' => $request->email, 
+            'password' => $request->password,
+            'role_id' => config('constains.is_user'),
+            'status' => config('constains.hidden'),
+        ];
+        if (Auth::attempt($isUser)) {
             return redirect()->route('home');
+        } elseif (Auth::attempt($isUserHide)) {
+            return redirect()->back()->with('error_login', trans('login.error_lock'));
+        } elseif (Auth::attempt($isAdmin)) {
+            return redirect()->route('users');
         } else {
             return redirect()->back()->with('error_login', trans('login.error_login'));
         }

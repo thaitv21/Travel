@@ -18,5 +18,6 @@
         'delete' => "Delete", 
         'success_delete' => 'Delete Successfully',
         'update_btn' => 'Update',
+        'admin_page' => 'Admin page',
     ];
 ?>

@@ -51,9 +51,13 @@
                                                     role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 {{ Auth::user()->name }}</a>
                                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                    @if (Auth::user()->role_id == config('constains.is_admin'))
+                                                        <a class="dropdown-item" href="{{ route('users') }}">{{ trans('profile.admin_page') }}</a>
+                                                    @endif
                                                     <a class="dropdown-item" href="{{ route('posts.index') }}">{{ trans('profile.my_posts') }}</a>
                                                     <a class="dropdown-item" href="{{ route('profiles.index') }}">{{ trans('profile.edit_profile') }}</a>
-                                                    <a class="dropdown-item" href="{{ route('logout') }}">{{ trans('login.logout') }}</a>
+                                                    <a class="dropdown-item" href="{{ route('logout') }}">
+                                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>{{ trans('login.logout') }}</a>
                                                 </div>
                                             </li>
                                             
