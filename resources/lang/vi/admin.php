@@ -28,5 +28,10 @@
         'success_show' => 'Hiện thành công!!',
         'success_lock' => 'Khóa thành công!!',
         'success_unlock' => 'Mở khóa thành công!!',
+        'add_user_header' => 'Thêm người dùng',
+        'add_sucess' => 'Thêm người dùng thành công!!',
+        'edit_sucess' => 'Chỉnh sửa người dùng thành công!!',
+        'add_btn' => 'Thêm',
+        'edit' => 'Sửa',
     ];
 ?>

@@ -5,8 +5,9 @@
 
 <!-- DataTales Example -->
     <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">{{ trans('admin.users_list') }}</h6>
+        <div class="card-header row">
+            <h6 class="m-0 font-weight-bold text-primary col-lg-10">{{ trans('admin.users_list') }}</h6>
+            <a class="btn btn-success col-lg-2 text-white" href="{{ route('action_users.index') }}">{{ trans('admin.add_btn') }}</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -29,7 +30,16 @@
                                 <td><img class="img-avt-admin"src="{{ asset($user->avatar) }}"></td>
                                 <td>{{ $user->role_id }}</td>
                                 <td>{{ $user->status }}</td>
-                                <td><a href="{{ route('hidden_user', $user->id) }}" class="btn-hide" id="user_action">{{ trans('admin.action') }}</a></td>
+                                <td><a href="{{ route('hidden_user', $user->id) }}" class="btn btn-primary"id="user_action">{{ trans('admin.action') }}</a></td>
+                                <td><form 
+                                        action="{{ route('action_users.edit', $user->id) }}" 
+                                        method="GET">
+                                        @csrf
+                                        <button type="submit" class="btn btn-primary float-right">
+                                            {{ trans('admin.edit') }}
+                                        </button>
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
