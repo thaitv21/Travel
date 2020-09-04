@@ -27,9 +27,13 @@ Route::resource('profiles', 'ProfileController');
 
 Route::get('places', 'ProvinceController@index')->name('places');
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('users', 'AdminController@getUsers')->name('users');
     Route::get('posts', 'AdminController@getPosts')->name('posts');
+    Route::get('comments', 'AdminController@getComments')->name('comments');
+    Route::get('posts/{id}','AdminController@actionPost')->name('hidden_post');
+    Route::get('comments/{id}','AdminController@actionComment')->name('hidden_cmt');
+    Route::get('users/{id}','AdminController@actionUser')->name('hidden_user');
 });
 
 Route::resource('comments', 'CommentController');

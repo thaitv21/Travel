@@ -57,6 +57,7 @@
                     <h4>{{ count($post->comments) }}{{ trans('profile.comment') }}</h4>
                     @foreach ($post->comments as $comment)
                         @if ($comment->parent_id == NULL)
+                            @if (Auth::user()->role_id == config('constains.is_admin') || $comment->status == config('constains.show'))
                             <div class="comment-list">
                                 <div class="single-comment justify-content-between d-flex">
                                     <div class="user justify-content-between d-flex">
@@ -76,6 +77,15 @@
                                                             @method('DELETE')                                    
                                                             <button type="submit" class="btn" id="delete-btn"><i class="fas fa-trash-alt"></i></button>
                                                         </form>
+                                                    @endif
+                                                    @if (Auth::user()->role_id == config('constains.is_admin'))
+                                                        @if ($comment->status == config('constains.show'))
+                                                            <a href="{{ route('hidden_cmt', $comment->id) }}" class="margin-left-avt">                                                       
+                                                                <i class="fas fa-eye"></i></a>
+                                                        @else
+                                                            <a href="{{ route('hidden_cmt', $comment->id) }}" class="margin-left-avt">                                                       
+                                                                <i class="fas fa-eye-slash"></i></a>
+                                                        @endif
                                                     @endif
                                                 </div>                                       
                                             </div>
@@ -107,6 +117,7 @@
                                     </div>
                                 </div>
                             </div>
+                            @endif
                         @endif
                     @endforeach        
                 </div>

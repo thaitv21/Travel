@@ -1,4 +1,5 @@
 @foreach ($comments as $comment)
+@if (Auth::user()->role_id == config('constains.is_admin') || $comment->status == config('constains.show'))
     <div class="comment-list">
         <div class="single-comment justify-content-between d-flex">
             <div class="user justify-content-between d-flex">
@@ -18,6 +19,15 @@
                                     @method('DELETE')                                    
                                     <button type="submit" class="btn" id="delete-btn"><i class="fas fa-trash-alt"></i></button>
                                 </form>
+                            @endif
+                            @if (Auth::user()->role_id == config('constains.is_admin'))
+                                @if ($comment->status == config('constains.show'))
+                                    <a href="{{ route('hidden_cmt', $comment->id) }}" class="margin-left-avt">                                                       
+                                        <i class="fas fa-eye"></i></a>
+                                @else
+                                    <a href="{{ route('hidden_cmt', $comment->id) }}" class="margin-left-avt">                                                       
+                                        <i class="fas fa-eye-slash"></i></a>
+                                @endif
                             @endif
                         </div>                                       
                     </div>
@@ -41,7 +51,7 @@
                                 <div class="form-group">
                                     <a class="btn btn-primary" href="{{ route('login') }}">{{ trans('post.reply') }}</a>
                                 </div>
-                            @endif
+                            @endif                            
                         </form>                        
                     </div>
                     @include('pages.comment', ['comments' => $comment->replies])
@@ -49,4 +59,5 @@
             </div>
         </div>
     </div>
+@endif
 @endforeach  

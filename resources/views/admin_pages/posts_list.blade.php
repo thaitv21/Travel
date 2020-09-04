@@ -2,7 +2,11 @@
 @section('content')
 <!-- Begin Page Content -->
 <div class="container-fluid">
-
+    @if (session()->has('success'))
+        <div class="alert alert-success">
+            {{ session()->get('success') }}
+        </div>
+    @endif
 <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
@@ -31,7 +35,7 @@
                                 <td>{{ $post->content }}</td>
                                 <td>{{ $post->place_id }}</td>
                                 <td>{{ $post->status }}</td>
-                                <td><button class="btn-hide">{{ trans('admin.btn_hide') }}</button></td>
+                                <td><a href="{{ route('hidden_post', $post->id) }}" id="post_action" class="btn-hide">{{ trans('admin.action') }}</a></td>
                             </tr>
                         @endforeach
                     </tbody>

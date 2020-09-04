@@ -29,7 +29,7 @@
                                 <td><img class="img-avt-admin"src="{{ asset($user->avatar) }}"></td>
                                 <td>{{ $user->role_id }}</td>
                                 <td>{{ $user->status }}</td>
-                                <td><button class="btn-hide">{{ trans('admin.btn_hide') }}</button></td>
+                                <td><a href="{{ route('hidden_user', $user->id) }}" class="btn-hide" id="user_action">{{ trans('admin.action') }}</a></td>
                             </tr>
                         @endforeach
                     </tbody>

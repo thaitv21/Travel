@@ -23,18 +23,19 @@ tr:hover{
 }
 
 .btn-hide {
-    background-color: Crimson;
+    background-color: rgb(10, 34, 100);
     border: none;
     color: white;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
     cursor: pointer;
     border-radius: 5px;
+    height: 25px;
+    width: 50px;
 }
 
 .btn-hide:hover {
-    background-color: rgb(6, 73, 73);
+    background-color: rgb(230, 227, 74);
+    color: black;
 }

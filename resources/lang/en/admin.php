@@ -19,6 +19,14 @@
         'cmts_list' => 'COMMENTS LIST',
         'admin_acc' => 'Admin',
         'logout' => 'Logout',
-        'btn-hide' => 'Hide',
+        'btn_hide' => 'Hide',
+        'post_id' => 'post_id',
+        'cmt' => 'Comment',
+        'parent_id' => 'parent_id',
+        'btn_lock' => 'Lock',
+        'success_hidden' => 'Hidden successfully!!',
+        'success_show' => 'Show successfully!!',
+        'success_lock' => 'Lock successfully!!',
+        'success_unlock' => 'Unlock successfully!!',
     ];
 ?>
