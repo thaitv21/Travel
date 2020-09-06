@@ -9,15 +9,11 @@ use App\Models\Post;
 use App\Models\Image;
 use App\Models\Place;
 use App\Models\User;
+use App\Models\Comment;
 use Auth;
 
 class PostController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $user = User::with('posts')->find(Auth::id());
@@ -25,11 +21,6 @@ class PostController extends Controller
         return view('pages.profiles.mypost', compact('user'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $provinces = Province::all();
@@ -37,12 +28,6 @@ class PostController extends Controller
         return view('pages.create_post', compact('provinces'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(PostRequest $request)
     {
         $place = Place::create([
@@ -71,29 +56,39 @@ class PostController extends Controller
             }
         }
 
-        return redirect()->route('home')->with('success', trans('profile.success_mess'));
+        return redirect()->route('posts.index')->with('success', trans('profile.success_mess'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        $post = Post::find($id);
+        try {
+            $post = Post::findOrFail($id);            
+        } catch (ModelNotFoundException $exception) {
+            return view('404');
+        }
+        
         $provinces = Province::all();
+        foreach ($post->comments as $comment) {
+            if ($comment->status == config('constains.hidden')) {
+                foreach ($comment->replies as $reply) {
+                    $reply->status = config('constains.hidden');
+                    $reply->update();
+                }
+            }
+        }
+        foreach ($post->images as $image) {
+            if ($image->url != $post->images->first()->url) {
+                $img_2 = $image->url;
+            }
+        }
+        $countComment = Comment::where([
+            ['post_id', $id],
+            ['status', config('constains.show')],
+        ])->get();
 
-        return view('pages.single_post', compact('post', 'provinces'));
+        return view('pages.single_post', compact('post', 'provinces', 'countComment', 'img_2'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $post = Post::findOrFail($id);
@@ -102,13 +97,6 @@ class PostController extends Controller
         return view('pages.edit_post', compact('post', 'provinces'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(PostRequest $request, $id)
     {
         $post = Post::findOrFail($id);
@@ -137,12 +125,6 @@ class PostController extends Controller
         return redirect()->back()->with('success', trans('profile.success_mess'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $post = Post::findOrFail($id);

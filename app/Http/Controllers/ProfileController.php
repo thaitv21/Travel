@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UpdateProfileRequest;
+use App\Http\Requests\ProfileRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Auth;
@@ -72,7 +72,7 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateProfileRequest $request, $id)
+    public function update(ProfileRequest $request, $id)
     {
         $user = User::findOrFail($id);
         if ($request->hasFile('avatar')) {

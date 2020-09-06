@@ -41,3 +41,5 @@ Route::resource('comments', 'CommentController');
 Route::post('comments/reply', 'CommentController@replyStore')->name('reply');
 
 Route::get('like/{id}', 'LikeController@addLike')->name('like');
+
+Route::get('search', 'SearchDataController@result')->name('search');
