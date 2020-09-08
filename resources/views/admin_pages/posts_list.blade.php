@@ -20,22 +20,22 @@
                         <th>{{ trans('admin.user_id') }}</th>
                         <th>{{ trans('admin.title') }}</th>
                         <th>{{ trans('admin.intro') }}</th>
-                        <th>{{ trans('admin.content') }}</th>
                         <th>{{ trans('admin.place_id') }}</th>
                         <th>{{ trans('admin.status') }}</th>
-                        <th>{{ trans('admin.action') }}</th>
                     </thead>
                     <tbody>
                         @foreach ($posts as $post)
                             <tr>
                                 <td>{{ $post->id }}</td>
-                                <td>{{ $post->user_id }}</td>
+                                <td>{{ $post->user->name }}</td>
                                 <td>{{ $post->title }}</td>
                                 <td>{{ $post->intro }}</td>
-                                <td>{{ $post->content }}</td>
-                                <td>{{ $post->place_id }}</td>
-                                <td>{{ $post->status }}</td>
-                                <td><a href="{{ route('hidden_post', $post->id) }}" id="post_action" class="btn-hide">{{ trans('admin.action') }}</a></td>
+                                <td>{{ $post->place->place_name }}</td>                                
+                                @if ($post->status == config('constains.hidden'))
+                                    <td><a href="{{ route('hidden_post', $post->id) }}" id="post_action" class="btn btn-primary">{{ trans('admin.hidden') }}</a></td>
+                                @else 
+                                    <td><a href="{{ route('hidden_post', $post->id) }}" id="post_action" class="btn btn-primary">{{ trans('admin.show') }}</a></td>
+                                @endif
                             </tr>
                         @endforeach
                     </tbody>

@@ -17,7 +17,7 @@
                                     <ul id="navigation">
                                         <li><a class="#" href="{{ route('home') }}">{{ trans('header.home') }}</a></li>
                                         <li><a href="{{ route('places') }}">{{ trans('header.places') }}</a></li>
-                                        <li><a class="" href="#">{{ trans('header.experience') }}</a></l/li>
+                                        <li><a class="" href="{{ route('new_review') }}">{{ trans('header.experience') }}</a></l/li>
                                     </ul>
                                 </nav>
                             </div>

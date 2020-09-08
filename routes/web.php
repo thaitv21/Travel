@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('review', 'HomeController@experience')->name('new_review');
+Route::get('hot-review', 'HomeController@hotReview')->name('hot_review');
 
 Route::get('sign-up', 'RegisterController@getSignUp');
 Route::post('sign-up', 'RegisterController@postSignUp')->name('signup');

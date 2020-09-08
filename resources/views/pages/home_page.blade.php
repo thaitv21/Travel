@@ -58,24 +58,87 @@
                                         <a href="{{ route('posts.show', $post->id) }}">
                                             <h3>{{ $post->title }}</h3>
                                         </a>
-                                        <span>
+                                        <p class="margin-top-user ">
                                             @if ($post->user->avatar == NULL)
                                                 <img src="{{ asset(config('constains.avatar')) }}" 
-                                                    class="avt-img" id="avt-img"></label>
+                                                    class="avt-img" id="avt-img">
                                             @else
                                                 <img src="{{ asset($post->user->avatar) }}" 
-                                                    class="avt-img" alt="{{ trans('profile.user_avt') }}" id="avt-img"></label>
+                                                    class="avt-img" alt="{{ trans('profile.user_avt') }}" id="avt-img">
                                             @endif
                                             {{ $post->user->name }}
-                                        </span>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
                         @endif
                     @endforeach
                 </div>
+                <div class="row margin-top ">
+                    <div class="col-lg-12">
+                        <div class="more_place_btn text-center">
+                            <a class="boxed-btn4" href="{{ route('new_review') }}">{{ trans('home_page.more_review') }}</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     <!-- popular_destination_area_end  -->
+    <div class="popular_destination_area ">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="section_title text-center mb_70">
+                        <h3>{{ trans('home_page.fea_post') }}</h3>
+                        <p>{{ trans('home_page.good_articles') }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="recent_trip_area">
+                <div class="row">
+                    @foreach ($feature_posts as $post)
+                        @if ($post->status == config('constains.show'))
+                            <div class="col-lg-4 col-md-6 margin-top">
+                                <div class="single_trip home-post">
+                                    <div class="thumb img-post-home">
+                                        <img src="{{ asset($post->images->first()->url) }}" alt="">
+                                    </div>
+                                    <div class="info margin-left-avt">
+                                        <div class="date">
+                                            <span><i class="far fa-calendar-alt"></i>
+                                                {{ $post->created_at->format('d, M, Y') }}
+                                            </span>
+                                        </div>
+                                        <a href="{{ route('posts.show', $post->id) }}">
+                                            <h3>{{ $post->title }}</h3>
+                                        </a>
+                                        <p class="margin-top-user">
+                                            @if ($post->user->avatar == NULL)
+                                                <img src="{{ asset(config('constains.avatar')) }}" 
+                                                    class="avt-img" id="avt-img">
+                                            @else
+                                                <img src="{{ asset($post->user->avatar) }}" 
+                                                    class="avt-img" alt="{{ trans('profile.user_avt') }}" id="avt-img">
+                                            @endif
+                                            {{ $post->user->name }}
+                                        </p>
+                                        <a href="{{ route('posts.show', $post->id) }}">
+                                            <i class="fas fa-thumbs-up"></i>  {{ count($post->likes) }}
+                                        </a>                                        
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
+                </div>
+                <div class="row margin-top ">
+                    <div class="col-lg-12">
+                        <div class="more_place_btn text-center">
+                            <a class="boxed-btn4" href="{{ route('hot_review') }}">{{ trans('home_page.more_review') }}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
 @endsection

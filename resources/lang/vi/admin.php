@@ -33,5 +33,9 @@
         'edit_sucess' => 'Chỉnh sửa người dùng thành công!!',
         'add_btn' => 'Thêm',
         'edit' => 'Sửa',
+        'hidden' => 'Ẩn',
+        'show' => 'Hiện',
+        'unlock' => 'Bỏ khóa',
+        'user' => 'Người dùng',
     ];
 ?>
