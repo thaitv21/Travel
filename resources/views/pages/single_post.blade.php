@@ -51,11 +51,11 @@
                         <p class="like-info">
                             @if (Auth::check())                             
                                 <a href="{{ route('like', $post->id) }}" class="col-lg-2"><i class="fas fa-thumbs-up">                                
-                                    </i>{{ count($post->likes) }}
+                                    </i>&nbsp;{{ count($post->likes) }}
                                 </a>
                             @else
                                 <a href="{{ route('login') }}" class="col-lg-2"><i class="fas fa-thumbs-up">                                
-                                    </i>{{ count($post->likes) }}
+                                    </i>&nbsp;{{ count($post->likes) }}
                                 </a>
                             @endif
                         </p>
@@ -129,8 +129,8 @@
                                     </div>
                                 </div>
                             </div>
-                            @endif
-                            @if (Auth::check())
+                            
+                            @elseif (Auth::check())
                                 @if (Auth::user()->role_id == config('constains.is_admin'))
                                 <div class="comment-list">
                                     <div class="single-comment justify-content-between d-flex">

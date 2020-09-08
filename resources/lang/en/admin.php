@@ -33,5 +33,9 @@
         'edit_sucess' => 'Edit user successfully!!',
         'add_btn' => 'ADD',
         'edit' => 'Edit',
+        'hidden' => 'Hidden',
+        'show' => 'Show',
+        'unlock' => 'Unlock',
+        'user' => 'User',
     ];
 ?>

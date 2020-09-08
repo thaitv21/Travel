@@ -28,9 +28,17 @@
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td><img class="img-avt-admin"src="{{ asset($user->avatar) }}"></td>
-                                <td>{{ $user->role_id }}</td>
-                                <td>{{ $user->status }}</td>
-                                <td><a href="{{ route('hidden_user', $user->id) }}" class="btn btn-primary"id="user_action">{{ trans('admin.action') }}</a></td>
+                                @if ($user->role_id == config('constains.is_user'))
+                                    <td>{{ trans('admin.user') }}</td>
+                                @else
+                                    <td>{{ trans('admin.admin_acc') }}</td>
+                                @endif
+                                
+                                @if ($user->status == config('constains.hidden'))
+                                    <td><a href="{{ route('hidden_user', $user->id) }}" class="btn btn-primary" id="user_action">{{ trans('admin.btn_lock') }}</a></td>
+                                @else 
+                                    <td><a href="{{ route('hidden_user', $user->id) }}" class="btn btn-primary" id="user_action">{{ trans('admin.unlock') }}</a></td>
+                                @endif
                                 <td><form 
                                         action="{{ route('action_users.edit', $user->id) }}" 
                                         method="GET">
