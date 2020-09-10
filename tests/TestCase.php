@@ -3,8 +3,25 @@
 namespace Tests;
 
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 abstract class TestCase extends BaseTestCase
 {
     use CreatesApplication;
+    
+    protected function assertHasMany($related, $foreignKey, $relation)
+    {
+        $this->assertInstanceOf(HasMany::class, $relation);
+        $this->assertInstanceOf($related, $relation->getRelated());
+        $this->assertEquals($foreignKey, $relation->getForeignKeyName());
+    }
+
+    protected function assertBelongsTo($related, $foreignKey, $ownerKey, $relation)
+    {
+        $this->assertInstanceOf(BelongsTo::class, $relation);
+        $this->assertInstanceOf($related, $relation->getRelated());
+        $this->assertEquals($ownerKey, $relation->getOwnerKeyName());
+        $this->assertEquals($foreignKey, $relation->getForeignKeyName());
+    }
 }
