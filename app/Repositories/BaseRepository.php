@@ -29,9 +29,7 @@ abstract class BaseRepository implements RepositoryInterface
     
     public function find($id)
     {
-        $result = $this->model->find($id);
-
-        return $result;
+        return $this->model->findOrFail($id);
     }
     
     public function create($attributes = [])

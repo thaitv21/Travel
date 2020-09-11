@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use App\Http\Requests\UpdateProfileRequest;
 use App\Http\Requests\RegisterRequest;
@@ -45,29 +46,27 @@ class UserController extends Controller
     {
         try {
             $user = $this->userRepo->find($id);
+            
+            return view('admin_pages.update_user', compact('user'));
         } catch (ModelNotFoundException $exception) {
             return view('404');
         }
-
-        return view('admin_pages.update_user', compact('user'));
     }
 
     public function update(UpdateProfileRequest $request, $id)
     {
         try {
-            $user = $this->userRepo->find($id);
+            $data = [
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+            ];    
+            $this->userRepo->update($data, $id);
+    
+            return redirect()->route('users')->with('success', trans('admin.edit_success'));
         } catch (ModelNotFoundException $exception) {
             return view('404');
-        }
-        $data = [
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ];
-
-        $this->userRepo->update($data, $id);
-
-        return redirect()->route('users')->with('success', trans('admin.edit_success'));
+        }        
     }
 
     public function destroy($id)
