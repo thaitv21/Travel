@@ -11,8 +11,8 @@
                         <p>{{ trans('post.opti_img') }}</p>
                         <div class="file-field big">
                             <a class="btn-floating btn-lg amber darken-2 mt-0">
-                            <label for="img_title" class="m-0 rounded-pill px-4"> 
-                                <i class="fas fa-cloud-upload-alt fa-3x" aria-hidden="true" id="img_button"></i>
+                            <label for="img_title" class="m-0 rounded-pill px-4">
+                                <i class="fas fa-cloud-upload-alt fa-3x mt-2 mb-3" aria-hidden="true" id="img_button"></i>
                                 <input id="img_title" type="file" name="images[]" class="form-control border-0 uploat-img">
                             </label>
                             </a>
@@ -28,25 +28,25 @@
         </div>
     @endif
     <div class="container">
-        <div class="card-body">            
+        <div class="card-body">
             <div class="form-group">
                 <h4>{{ trans('post.title') }}</h4>
             </div>
             <div class="form-group">
-                <input 
-                    type="text" 
-                    class="form-control" 
-                    placeholder="{{ trans('post.title_post') }}" 
+                <input
+                    type="text"
+                    class="form-control"
+                    placeholder="{{ trans('post.title_post') }}"
                     name="title">
             </div>
             <div class="form-group">
                 <h4>{{ trans('post.place') }}</h4>
             </div>
             <div class="form-group">
-                <input 
+                <input
                     name="place"
-                    type="text" 
-                    class="form-control input_post" 
+                    type="text"
+                    class="form-control input_post"
                     placeholder="{{ trans('post.place_review') }}">
                     <label for="prov_list">
                         <select id="prov_list" name="prov_list" class="select_prov mdb-select md-form">
@@ -58,10 +58,10 @@
                     </label>
             </div>
             <div class="form-group">
-                <textarea 
-                    name="intro" 
-                    placeholder="{{ trans('post.intro') }}" 
-                    rows="3" 
+                <textarea
+                    name="intro"
+                    placeholder="{{ trans('post.intro') }}"
+                    rows="3"
                     class="form-control"
                     ></textarea>
             </div>
@@ -75,7 +75,7 @@
                     <input id="upload" type="file" class="form-control border-0" name="images[]">
                     <label id="upload-label" class="font-weight-light text-muted">{{ trans('post.choose_img') }}</label>
                     <div class="input-group-append">
-                        <label for="upload" class="btn btn-light m-0 rounded-pill px-4"> 
+                        <label for="upload" class="btn btn-light m-0 rounded-pill px-4">
                             <i class="fa fa-cloud-upload-alt mr-2 text-muted"></i>
                             <small class="text-uppercase font-weight-bold text-muted">{{ trans('post.choose_img') }}</small></label>
                     </div>
@@ -88,10 +88,10 @@
             </div>
 
             <div class="form-group">
-                <textarea 
-                    name="content" 
-                    placeholder="{{ trans('post.content') }}" 
-                    rows="5" 
+                <textarea
+                    name="content"
+                    placeholder="{{ trans('post.content') }}"
+                    rows="5"
                     class="form-control"
                     ></textarea>
             </div>

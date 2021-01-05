@@ -1,11 +1,10 @@
 <?php
     return [
-        'address' => 'Handico, Pham Hung',
+        'address' => 'Hanoi University of Science and Technology',
         'city' => 'Ha Noi',
         'mail' => 'travelo@gmail.com',
         'copyright' => 'Copyright',
-        'template' => 'This template is made with',
-        'by' => 'by Bui Phuong Thao',
+        'by' => 'by Nguyen Thi Hong Hanh',
         'year' => '2020',
     ];
 ?>

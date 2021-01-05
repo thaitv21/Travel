@@ -62,11 +62,11 @@ class PostController extends Controller
     public function show($id)
     {
         try {
-            $post = Post::findOrFail($id);            
+            $post = Post::with('images')->findOrFail($id);
         } catch (ModelNotFoundException $exception) {
             return view('404');
         }
-        
+
         $provinces = Province::all();
         foreach ($post->comments as $comment) {
             if ($comment->status == config('constains.hidden')) {
@@ -76,6 +76,7 @@ class PostController extends Controller
                 }
             }
         }
+        $img_2 = '';
         foreach ($post->images as $image) {
             if ($image->url != $post->images->first()->url) {
                 $img_2 = $image->url;

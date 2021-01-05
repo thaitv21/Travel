@@ -8,21 +8,21 @@
                     {{ session()->get('success') }}
                 </div>
             @endif
-            <form action="{{ route('profiles.update', Auth::user()->id) }}" method="POST" enctype="multipart/form-data">
+            <form class="ml-5 mr-5" action="{{ route('profiles.update', Auth::user()->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
                 <div class="form-group">
-                    <div class="avt-center"> 
+                    <div class="avt-center">
                         <h3 class="card-user-avt">{{ trans('profile.user_avt') }}</h3>
                         <label>
                             @if (Auth::user()->avatar == NULL)
-                                <img src="{{ asset(config('constains.avatar')) }}" 
+                                <img width="80" height="80" src="{{ asset(config('constains.avatar')) }}"
                                     class="avt-image rounded-circle" alt="{{ trans('profile.user_avt') }}" id="avt-img-edit"></label>
                             @else
-                                <img src="{{ Auth::user()->avatar }}" 
+                                <img width="80" height="80" src="{{ Auth::user()->avatar }}"
                                     class="avt-image rounded-circle" alt="{{ trans('profile.user_avt') }}" id="avt-img-edit"></label>
                             @endif
-                        <label for="input-avt" class="m-0 rounded-pill px-4"> 
+                        <label for="input-avt" class="m-0 rounded-pill px-4">
                             <i class="fas fa-cloud-upload-alt" aria-hidden="true" id="avt_button">{{ trans('profile.up_avt') }}</i>
                             <input id="input-avt" type="file" name="avatar" class="form-control border-0 uploat-img">
                         </label>
@@ -31,7 +31,7 @@
 
                 <div class="form-group row avt_center">
                     <p class="col-sm-3">{{ trans('profile.user_name') }}</p>
-                    <input type="text" class="form-control col-sm-6" name="name" 
+                    <input type="text" class="form-control col-sm-6" name="name"
                         value="{{ Auth::user()->name }}" >
                 </div>
                 @if ($errors->has('name'))

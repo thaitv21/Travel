@@ -4,9 +4,13 @@
         <div class="single-comment justify-content-between d-flex">
             <div class="user justify-content-between d-flex">
                 <div class="thumb">
-                    <img src="{{ asset($comment->user->avatar) }}" alt="">
+                    @if($comment->user->avatar == NULL)
+                        <img width="30" height="30" src="{{ asset(config('constains.avatar')) }}" alt="">
+                    @else
+                        <img width="30" height="30" src="{{ asset($comment->user->avatar) }}" alt="">
+                    @endif
                 </div>
-                <div class="desc">                                    
+                <div class="desc">
                     <div class="d-flex justify-content-between">
                         <div class="d-flex align-items-center">
                             <h5>
@@ -16,27 +20,27 @@
                             @if (Auth::id() == $comment->user->id)
                                 <form action="{{ route('comments.destroy', $comment->id) }}" method="POST">
                                     @csrf
-                                    @method('DELETE')                                    
+                                    @method('DELETE')
                                     <button type="submit" class="btn" id="delete-btn"><i class="fas fa-trash-alt"></i></button>
                                 </form>
                             @endif
                             @if (Auth::check())
                                 @if (Auth::user()->role_id == config('constains.is_admin'))
                                     @if ($comment->status == config('constains.show'))
-                                        <a href="{{ route('hidden_cmt', $comment->id) }}" class="margin-left-avt">                                                       
+                                        <a href="{{ route('hidden_cmt', $comment->id) }}" class="margin-left-avt">
                                             <i class="fas fa-eye"></i></a>
                                     @else
-                                        <a href="{{ route('hidden_cmt', $comment->id) }}" class="margin-left-avt">                                                       
+                                        <a href="{{ route('hidden_cmt', $comment->id) }}" class="margin-left-avt">
                                             <i class="fas fa-eye-slash"></i></a>
                                     @endif
                                 @endif
                             @endif
-                        </div>                                       
+                        </div>
                     </div>
                     <p class="comment">
                         {{ $comment->comment }}
                     </p>
-                    <div>                                    
+                    <div>
                         <form method="post" action="{{ route('reply') }}">
                             @csrf
                             <div class="form-group">
@@ -44,7 +48,7 @@
                                 <input type="hidden" name="post_id" value="{{ $post->id }}" />
                                 <input type="hidden" name="parent_id" value="{{ $comment->id }}" />
                             </div>
-                            @if (Auth::check()) 
+                            @if (Auth::check())
                                 <div class="form-group">
                                     <input type="hidden" name="user_id" value="{{ Auth::id() }}">
                                     <input type="submit" class="btn btn-primary" value="{{ trans('post.reply') }}"/>
@@ -53,8 +57,8 @@
                                 <div class="form-group">
                                     <a class="btn btn-primary" href="{{ route('login') }}">{{ trans('post.reply') }}</a>
                                 </div>
-                            @endif                            
-                        </form>                        
+                            @endif
+                        </form>
                     </div>
                     @include('pages.comment', ['comments' => $comment->replies])
                 </div>
@@ -68,9 +72,13 @@
         <div class="single-comment justify-content-between d-flex">
             <div class="user justify-content-between d-flex">
                 <div class="thumb">
-                    <img src="{{ asset($comment->user->avatar) }}" alt="">
+                    @if($comment->user->avatar == NULL)
+                        <img width="30" height="30" src="{{ asset(config('constains.avatar')) }}" alt="">
+                    @else
+                        <img width="30" height="30" src="{{ asset($comment->user->avatar) }}" alt="">
+                    @endif
                 </div>
-                <div class="desc">                                    
+                <div class="desc">
                     <div class="d-flex justify-content-between">
                         <div class="d-flex align-items-center">
                             <h5>
@@ -80,25 +88,25 @@
                             @if (Auth::id() == $comment->user->id)
                                 <form action="{{ route('comments.destroy', $comment->id) }}" method="POST">
                                     @csrf
-                                    @method('DELETE')                                    
+                                    @method('DELETE')
                                     <button type="submit" class="btn" id="delete-btn"><i class="fas fa-trash-alt"></i></button>
                                 </form>
                             @endif
                             @if (Auth::user()->role_id == config('constains.is_admin'))
                                 @if ($comment->status == config('constains.show'))
-                                    <a href="{{ route('hidden_cmt', $comment->id) }}" class="margin-left-avt">                                                       
+                                    <a href="{{ route('hidden_cmt', $comment->id) }}" class="margin-left-avt">
                                         <i class="fas fa-eye"></i></a>
                                 @else
-                                    <a href="{{ route('hidden_cmt', $comment->id) }}" class="margin-left-avt">                                                       
+                                    <a href="{{ route('hidden_cmt', $comment->id) }}" class="margin-left-avt">
                                         <i class="fas fa-eye-slash"></i></a>
                                 @endif
                             @endif
-                        </div>                                       
+                        </div>
                     </div>
                     <p class="comment">
                         {{ $comment->comment }}
                     </p>
-                    <div>                                    
+                    <div>
                         <form method="post" action="{{ route('reply') }}">
                             @csrf
                             <div class="form-group">
@@ -106,7 +114,7 @@
                                 <input type="hidden" name="post_id" value="{{ $post->id }}" />
                                 <input type="hidden" name="parent_id" value="{{ $comment->id }}" />
                             </div>
-                            @if (Auth::check()) 
+                            @if (Auth::check())
                                 <div class="form-group">
                                     <input type="hidden" name="user_id" value="{{ Auth::id() }}">
                                     <input type="submit" class="btn btn-primary" value="{{ trans('post.reply') }}"/>
@@ -115,8 +123,8 @@
                                 <div class="form-group">
                                     <a class="btn btn-primary" href="{{ route('login') }}">{{ trans('post.reply') }}</a>
                                 </div>
-                            @endif                            
-                        </form>                        
+                            @endif
+                        </form>
                     </div>
                     @include('pages.comment', ['comments' => $comment->replies])
                 </div>
@@ -125,4 +133,4 @@
     </div>
     @endif
 @endif
-@endforeach  
+@endforeach

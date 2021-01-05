@@ -1,4 +1,4 @@
-<header>  
+<header>
     <div class="header-area ">
         <div id="sticky-header" class="main-header-area">
             <div class="container-fluid">
@@ -17,7 +17,7 @@
                                     <ul id="navigation">
                                         <li><a class="#" href="{{ route('home') }}">{{ trans('header.home') }}</a></li>
                                         <li><a href="{{ route('places') }}">{{ trans('header.places') }}</a></li>
-                                        <li><a class="" href="{{ route('new_review') }}">{{ trans('header.experience') }}</a></l/li>
+                                        <li><a class="" href="{{ route('new_review') }}">{{ trans('header.experience') }}</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -39,15 +39,15 @@
                                         @if (Auth::check())
                                             <li>
                                                 @if (Auth::user()->avatar == NULL)
-                                                    <img src="{{ asset(config('constains.avatar')) }}" 
+                                                    <img width="50" height="50" src="{{ asset(config('constains.avatar')) }}"
                                                         class="avt-img-header margin-left-avt " alt="{{ trans('profile.user_avt') }}"></label>
                                                 @else
-                                                    <img src="{{ asset(Auth::user()->avatar) }}" 
+                                                    <img width="50" height="50" src="{{ asset(Auth::user()->avatar) }}"
                                                         class="avt-img-header margin-left-avt " alt="{{ trans('profile.user_avt') }}"></label>
                                                 @endif
                                             </li>
                                             <li class="nav-item dropdown">
-                                                <a class="nav-link dropdown-toggle" href="{{ route('login') }}" id="navbarDropdown" 
+                                                <a class="nav-link dropdown-toggle" href="{{ route('login') }}" id="navbarDropdown"
                                                     role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 {{ Auth::user()->name }}</a>
                                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -60,7 +60,7 @@
                                                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>{{ trans('login.logout') }}</a>
                                                 </div>
                                             </li>
-                                            
+
                                         @else
                                             <li><a href="{{ route('login') }}">{{ trans('header.login') }} </a></li>
                                             <li><a href="{{ route('signup') }}"></i> {{ trans('login.signup_button') }} </a></li>

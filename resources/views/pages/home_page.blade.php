@@ -1,6 +1,6 @@
 @extends('home')
 @section('css')
-    <link rel="stylesheet" href="{{ mix('css/all.css') }}"> 
+    <link rel="stylesheet" href="{{ mix('css/all.css') }}">
 @endsection
 @section('content')
     <!-- where_togo_area_start  -->
@@ -19,7 +19,7 @@
                                 <input type="text" placeholder="{{ trans('header.search_input') }}" name="search"/>
                             </div>
                             <div class="search_btn">
-                                <button class="boxed-btn4 " type="submit" >{{ trans('header.search_button') }}</button>
+                                <button class="boxed-btn4 " type="submit">{{ trans('header.search_button') }}</button>
                             </div>
                         </form>
                     </div>
@@ -28,7 +28,7 @@
         </div>
     </div>
     <!-- where_togo_area_end  -->
-    
+
     <!-- popular_destination_area_start  -->
     <div class="popular_destination_area ">
         <div class="container">
@@ -60,11 +60,12 @@
                                         </a>
                                         <p class="margin-top-user ">
                                             @if ($post->user->avatar == NULL)
-                                                <img src="{{ asset(config('constains.avatar')) }}" 
-                                                    class="avt-img" id="avt-img">
+                                                <img width="50" height="50"
+                                                     src="{{ asset(config('constains.avatar')) }}"
+                                                     class="avt-img" id="avt-img">
                                             @else
-                                                <img src="{{ asset($post->user->avatar) }}" 
-                                                    class="avt-img" alt="{{ trans('profile.user_avt') }}" id="avt-img">
+                                                <img width="50" height="50" src="{{ asset($post->user->avatar) }}"
+                                                     class="avt-img" alt="{{ trans('profile.user_avt') }}" id="avt-img">
                                             @endif
                                             {{ $post->user->name }}
                                         </p>
@@ -74,10 +75,11 @@
                         @endif
                     @endforeach
                 </div>
-                <div class="row margin-top ">
+                <div class="row margin-top mt-30">
                     <div class="col-lg-12">
                         <div class="more_place_btn text-center">
-                            <a class="boxed-btn4" href="{{ route('new_review') }}">{{ trans('home_page.more_review') }}</a>
+                            <a class="boxed-btn4"
+                               href="{{ route('new_review') }}">{{ trans('home_page.more_review') }}</a>
                         </div>
                     </div>
                 </div>
@@ -115,30 +117,32 @@
                                         </a>
                                         <p class="margin-top-user">
                                             @if ($post->user->avatar == NULL)
-                                                <img src="{{ asset(config('constains.avatar')) }}" 
-                                                    class="avt-img" id="avt-img">
+                                                <img width="50" height="50"
+                                                     src="{{ asset(config('constains.avatar')) }}"
+                                                     class="avt-img" id="avt-img">
                                             @else
-                                                <img src="{{ asset($post->user->avatar) }}" 
-                                                    class="avt-img" alt="{{ trans('profile.user_avt') }}" id="avt-img">
+                                                <img width="50" height="50" src="{{ asset($post->user->avatar) }}"
+                                                     class="avt-img" alt="{{ trans('profile.user_avt') }}" id="avt-img">
                                             @endif
                                             {{ $post->user->name }}
+                                            <a class="ml-5" href="{{ route('posts.show', $post->id) }}">
+                                                <i class="fas fa-thumbs-up"></i> {{ count($post->likes) }}
+                                            </a>
                                         </p>
-                                        <a href="{{ route('posts.show', $post->id) }}">
-                                            <i class="fas fa-thumbs-up"></i>  {{ count($post->likes) }}
-                                        </a>                                        
                                     </div>
                                 </div>
                             </div>
                         @endif
                     @endforeach
                 </div>
-                <div class="row margin-top ">
+                <div class="row mt-30 mb-30">
                     <div class="col-lg-12">
                         <div class="more_place_btn text-center">
-                            <a class="boxed-btn4" href="{{ route('hot_review') }}">{{ trans('home_page.more_review') }}</a>
+                            <a class="boxed-btn4"
+                               href="{{ route('hot_review') }}">{{ trans('home_page.more_review') }}</a>
                         </div>
                     </div>
                 </div>
             </div>
-    </div>
+        </div>
 @endsection
