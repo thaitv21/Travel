@@ -63,7 +63,7 @@
     <script src="{{ asset('bower_components/review_travel/js_travel/jquery.magnific-popup.min.js') }}"></script>
     <script src="{{ asset('bower_components/review_travel/js_travel/plugins.js') }}"></script>
     <script src="{{ asset('bower_components/review_travel/js_travel/gijgo.min.js') }}"></script>
-    <script src="{{ asset('bower_components/review_travel/js_travel/slick.min.js') }}"></script>   
+    <script src="{{ asset('bower_components/review_travel/js_travel/slick.min.js') }}"></script>
     <script src="{{ asset('bower_components/review_travel/js_travel/main.js') }}"></script>
     <!-- <script src="{{ asset('bower_components/review_travel/js_travel/js/jquery.ajaxchimp.min.js') }}"></script> -->
     <script src="{{ asset('bower_components/review_travel/js_travel/jquery.form.js') }}"></script>

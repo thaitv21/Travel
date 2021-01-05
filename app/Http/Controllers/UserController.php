@@ -46,7 +46,7 @@ class UserController extends Controller
     {
         try {
             $user = $this->userRepo->find($id);
-            
+
             return view('admin_pages.update_user', compact('user'));
         } catch (ModelNotFoundException $exception) {
             return view('404');
@@ -60,13 +60,13 @@ class UserController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
-            ];    
+            ];
             $this->userRepo->update($data, $id);
-    
+
             return redirect()->route('users')->with('success', trans('admin.edit_success'));
         } catch (ModelNotFoundException $exception) {
             return view('404');
-        }        
+        }
     }
 
     public function destroy($id)

@@ -1,6 +1,7 @@
 @extends('pages.profile')
 @section('profile')
 <div class="row justify-content-center card-body">
+    @php($page = 2)
     <div class="col-md-8">
         <div class="card card-default">
             @if (session()->has('success'))

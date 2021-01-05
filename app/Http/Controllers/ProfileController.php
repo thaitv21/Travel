@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Auth;
 use Hash;
+use Illuminate\Support\Facades\Log;
 
 class ProfileController extends Controller
 {
@@ -88,8 +89,8 @@ class ProfileController extends Controller
             else {
                 return redirect()->back()->with('error_pass', trans('profile.error_pass'));
             }
-        }        
-        
+        }
+
         $user->update();
 
         return redirect()->back()->with('success', trans('profile.success_mess'));

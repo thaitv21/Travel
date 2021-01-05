@@ -26,7 +26,11 @@
                             <div class=" text-center">
                                 <div class="single_trip">
                                     <div class="thumb">
-                                        <img src="{{ asset($post->images->first()->url) }}" alt="">
+                                        @if($post->images->first() != NULL)
+                                            <img src="{{ asset($post->images->first()->url) }}" alt="">
+                                        @else
+                                            <img src="{{ asset('/images/no_image.png') }}">
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -53,7 +57,7 @@
                                         <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn" id="delete-btn"><i class="fas fa-trash-alt"></i>{{ trans('profile.delete') }}</button>
+                                            <button type="submit" class="btn border-0" id="delete-btn" style="vertical-align: top; margin: 0; padding: 0; background: none;"><i class="fas fa-trash-alt mr-1"></i>{{ trans('profile.delete') }}</button>
                                         </form>
                                     </div>
                                 @endif

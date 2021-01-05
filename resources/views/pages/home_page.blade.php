@@ -47,7 +47,11 @@
                             <div class="col-lg-4 col-md-6 margin-top">
                                 <div class="single_trip home-post">
                                     <div class="thumb img-post-home">
-                                        <img src="{{ asset($post->images->first()->url) }}" alt="">
+                                        @if($post->images->first() != NULL)
+                                            <img src="{{ asset($post->images->first()->url) }}" alt="">
+                                        @else
+                                            <img src="{{ asset('/images/no_image.png') }}">
+                                        @endif
                                     </div>
                                     <div class="info margin-left-avt">
                                         <div class="date">
@@ -64,8 +68,9 @@
                                                      src="{{ asset(config('constains.avatar')) }}"
                                                      class="avt-img" id="avt-img">
                                             @else
-                                                <img width="50" height="50" src="{{ asset($post->user->avatar) }}"
-                                                     class="avt-img" alt="{{ trans('profile.user_avt') }}" id="avt-img">
+                                                <img
+                                                    width="50" height="50" src="{{ asset($post->user->avatar) }}"
+                                                    class="avt-img" alt="{{ trans('profile.user_avt') }}" id="avt-img">
                                             @endif
                                             {{ $post->user->name }}
                                         </p>
@@ -104,7 +109,11 @@
                             <div class="col-lg-4 col-md-6 margin-top">
                                 <div class="single_trip home-post">
                                     <div class="thumb img-post-home">
-                                        <img src="{{ asset($post->images->first()->url) }}" alt="">
+                                        @if($post->images->first() != NULL)
+                                            <img src="{{ asset($post->images->first()->url) }}" alt="">
+                                        @else
+                                            <img src="{{ asset('/images/no_image.png') }}">
+                                        @endif
                                     </div>
                                     <div class="info margin-left-avt">
                                         <div class="date">

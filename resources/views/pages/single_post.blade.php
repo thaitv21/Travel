@@ -5,7 +5,13 @@
     <link rel="stylesheet" href="{{ asset('bower_components/review_travel/css_travel/edit_profile.css') }}">
 @endsection
 @section('content')
-    <div class="bradcam_area" style="background-image: url({{asset($post->images->first()->url)}})" id="title_img">
+    @php
+        $image = '';
+        if ($post->images->first()) {
+            $image = asset($post->images->first()->url);
+        }
+    @endphp
+    <div class="bradcam_area" style="background-image: url({{$image}})">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
@@ -17,7 +23,7 @@
             </div>
         </div>
     </div>
-    <div class="media container text-align-center margin-left-avt align-items-center pl-0 mt-10">
+    <div class="media container text-align-center margin-left-avt align-items-center pl-0 mt-10 mb-4">
         @if ($post->user->avatar == NULL)
             <img width="50" height="50" src="{{ asset(config('constains.avatar')) }}"
                  class="avt-img-header margin-left-avt" id="avt-img"></label>
@@ -75,9 +81,11 @@
                                             <div class="user justify-content-between d-flex">
                                                 <div class="thumb">
                                                     @if($comment->user->avatar == NULL)
-                                                        <img width="30" height="30" src="{{ asset(config('constains.avatar')) }}" alt="">
+                                                        <img width="30" height="30"
+                                                             src="{{ asset(config('constains.avatar')) }}" alt="">
                                                     @else
-                                                        <img width="30" height="30" src="{{ asset($comment->user->avatar) }}" alt="">
+                                                        <img width="30" height="30"
+                                                             src="{{ asset($comment->user->avatar) }}" alt="">
                                                     @endif
                                                 </div>
                                                 <div class="desc">
@@ -153,9 +161,11 @@
                                                 <div class="user justify-content-between d-flex">
                                                     <div class="thumb">
                                                         @if($comment->user->avatar == NULL)
-                                                            <img width="30" height="30" src="{{ asset(config('constains.avatar')) }}" alt="">
+                                                            <img width="30" height="30"
+                                                                 src="{{ asset(config('constains.avatar')) }}" alt="">
                                                         @else
-                                                            <img width="30" height="30" src="{{ asset($comment->user->avatar) }}" alt="">
+                                                            <img width="30" height="30"
+                                                                 src="{{ asset($comment->user->avatar) }}" alt="">
                                                         @endif
                                                     </div>
                                                     <div class="desc">

@@ -47,7 +47,8 @@ class PostController extends Controller
             $file_images = $request->file('images');
             foreach ($file_images as $file_image) {
                 $filename = $file_image->getClientOriginalName();
-                $url = $file_image->move('Upload_Img', $filename);;
+                $name = preg_replace('/\s+/', '_', $filename);
+                $url = $file_image->move('Upload_Img', $name);;
                 $image = new Image([
                     'url' => $url,
                 ]);
@@ -112,15 +113,15 @@ class PostController extends Controller
             $file_images = $request->file('images');
             foreach ($file_images as $file_image) {
                 $filename = $file_image->getClientOriginalName();
-                $url = $file_image->move('Upload_Img', $filename);;
-                $image = Image::update([
+                $name = preg_replace('/\s+/', '_', $filename);
+                $url = $file_image->move('Upload_Img', $name);;
+                $image = new Image([
                     'url' => $url,
                 ]);
 
-                $post->images()->push($image);
+                $post->images()->save($image);
             }
         }
-
         $post->push();
 
         return redirect()->back()->with('success', trans('profile.success_mess'));

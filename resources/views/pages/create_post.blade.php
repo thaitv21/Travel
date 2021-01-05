@@ -13,7 +13,7 @@
                             <a class="btn-floating btn-lg amber darken-2 mt-0">
                             <label for="img_title" class="m-0 rounded-pill px-4">
                                 <i class="fas fa-cloud-upload-alt fa-3x mt-2 mb-3" aria-hidden="true" id="img_button"></i>
-                                <input id="img_title" type="file" name="images[]" class="form-control border-0 uploat-img">
+                                <input id="img_title" type="file" name="images[]" style="display: none" class="form-control border-0 uploat-img">
                             </label>
                             </a>
                         </div>
